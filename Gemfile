@@ -14,6 +14,7 @@ gem 'rails_12factor'
 gem 'responders'
 gem 'awesome_print'
 gem 'devise'
+gem "validate_url"
 # gem 'bcrypt', '~> 3.1.7'
 
 # gem 'unicorn'
@@ -32,6 +33,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'faker'
 end
 
 group :development do

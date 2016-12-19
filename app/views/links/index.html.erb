@@ -1,1 +1,17 @@
+<% if user_signed_in? %>
 
+<div class="link_submission">
+  <h3>Submit a link!</h3>
+  <label for="link_title">Title</label>
+  <input type="text" id="link_title" name="link_title" value="">
+  <br>
+  <label for="link_url">URL</label>
+  <input type="text" id="link_url" name="link_url" value="">
+  <button type="button" name="button" id="submit_link">Submit link</button>
+</div>
+<div id="links_list">
+<% @links.each do |link| %>
+  <%= render partial: "link", locals: {link: link} %>
+<% end %>
+</div>
+<% end %>
