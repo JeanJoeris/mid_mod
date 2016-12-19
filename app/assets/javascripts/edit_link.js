@@ -22,5 +22,6 @@ function editLink () {
 }
 
 function displayEditFailure(failureData){
-  console.log("FAILED attempt to edit Link: " + failureData.responseText);
+  // console.log("FAILED attempt to edit Link: " + failureData.responseText);
+  $('.flash_messages').append(`<div class="alert alert-failure">FAILED attempt to edit Link: ${failureData.responseText}</div>`)
 }
