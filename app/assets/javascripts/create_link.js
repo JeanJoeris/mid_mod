@@ -19,10 +19,10 @@ function createLink (event){
  }
 
 function getLinkData() {
- return {
+ return {link: {
    title: $newLinkTitle.val(),
    url: $newLinkUrl.val()
- }
+ }}
 }
 
 function renderLink(link){

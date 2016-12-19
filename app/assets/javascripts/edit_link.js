@@ -17,7 +17,7 @@ function editLink () {
     url: `/api/v1/links/${id}`,
     method: 'put',
     type: 'json',
-    data: link
+    data: {link: link}
   }).fail( displayEditFailure )
 }
 
