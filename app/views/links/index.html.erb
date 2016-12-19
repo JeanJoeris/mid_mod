@@ -1,1 +1,30 @@
+<% if user_signed_in? %>
+<div hidden id="current_user_id" data-id=<%= current_user.id %>></div>
 
+<div class="link_submission">
+  <h3>Submit a link!</h3>
+  <label for="link_title">Title</label>
+  <input type="text" id="link_title" name="link_title" value="">
+  <br>
+  <label for="link_url">URL</label>
+  <input type="text" id="link_url" name="link_url" value="">
+  <button type="button" name="button" id="submit_link">Submit link</button>
+</div>
+<div id="links_list">
+<% @links.each do |link| %>
+<div class='link' data-id=<%= link.id %> id=<%= "link-#{link.id}" %>>
+  <p class='link-title' contenteditable=true><%= "#{ link.title }" %></p>
+  <p class='link-url' contenteditable=true><%= "#{ link.url }" %></p>
+
+  <p class="link_read">
+    <%= "#{ link.read }" %>
+  </p>
+  <p class="link_buttons">
+    <button class="upgrade-quality">+</button>
+    <button class="downgrade-quality">-</button>
+    <button class='delete-link'>Delete</button>
+  </p>
+</div>
+<% end %>
+</div>
+<% end %>

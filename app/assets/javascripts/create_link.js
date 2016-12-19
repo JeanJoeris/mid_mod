@@ -4,6 +4,7 @@ $(document).ready(function(){
 
   $newLinkTitle = $("#link_title");
   $newLinkUrl  = $("#link_url");
+  $currentUserID = $('#current_user_id').data('id')
 
   $("#submit_link").on('click', createLink);
 })
@@ -14,7 +15,7 @@ function createLink (event){
   console.log("win")
 
   var link = getLinkData();
-
+  // debugger
   $.post("/api/v1/links", link)
    .then( renderLink )
    .fail( displayFailure )
@@ -22,6 +23,7 @@ function createLink (event){
 
 function getLinkData() {
  return {
+   user_id: $currentUserID,
    title: $newLinkTitle.val(),
    url: $newLinkUrl.val()
  }
