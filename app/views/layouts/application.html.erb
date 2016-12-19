@@ -8,6 +8,14 @@
 </head>
 <body>
 <div class="container">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+  <% if !user_signed_in? %>
+    <%= link_to "sign up", new_user_session_path %>
+  <% else %>
+    <%= link_to "sign out", destroy_user_session_path, url_options = {method: 'delete'} %>
+  <% end %>
   <%= yield %>
 </div>
 
