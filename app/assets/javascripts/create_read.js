@@ -18,18 +18,18 @@ function logReading () {
   if (have_read !== 'true') {
     console.log('read');
     $.post('http://localhost:2000/api/v1/reads', read)
-    .then(markLinkAsRead(id))
-    .then($link.find('.link_read').text('true'))
+    .then(markLinkAsRead(id, $link))
   }
 }
 
-function markLinkAsRead (id) {
+function markLinkAsRead (id, link) {
   $.ajax({
     url: `/api/v1/links/${id}`,
     method: 'put',
     type: 'json',
     data: {link: {read: true}}
-  })
+  }).then(link.find('.link_read').text('true'))
+  .then(link.addClass('read'))
 }
 
 function attachUnreadEvent () {
@@ -52,4 +52,5 @@ function markLinkAsUnread (id, link) {
     type: 'json',
     data: {link: {read: false}}
   }).then(link.find('.link_read').text('false'))
+  .then(link.removeClass('read'))
 }
