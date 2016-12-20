@@ -17,7 +17,7 @@ function logReading () {
 // debugger
   if (have_read !== 'true') {
     console.log('read');
-    $.post('http://localhost:2000/api/v1/reads', read)
+    $.post('https://jj-hot-reads.herokuapp.com/api/v1/reads', read)
     .then(markLinkAsRead(id, $link))
   }
 }

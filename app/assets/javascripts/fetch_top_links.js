@@ -4,7 +4,7 @@ $(document).ready(function () {
 })
 
 function loadTopLinks() {
-  $.getJSON('http://localhost:2000/api/v1/reads')
+  $.getJSON('https://jj-hot-reads.herokuapp.com/api/v1/reads')
   .then(function(topLinks) {
     topLinks.forEach(renderTopLink)
   })
