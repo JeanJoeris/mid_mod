@@ -1,5 +1,6 @@
 $(document).ready(function () {
   attachReadEvent()
+  attachUnreadEvent()
 })
 
 function attachReadEvent() {
@@ -29,4 +30,26 @@ function markLinkAsRead (id) {
     type: 'json',
     data: {link: {read: true}}
   })
+}
+
+function attachUnreadEvent () {
+  $('.unread-link').on('click', logUnread)
+}
+
+function logUnread () {
+  var $link = $(this).closest('.link')
+  var id = $link.data('id')
+  var have_read = $link.find('.link_read').text().trim()
+  if (have_read === 'true') {
+    markLinkAsUnread(id, $link)
+  }
+}
+
+function markLinkAsUnread (id, link) {
+  $.ajax({
+    url: `/api/v1/links/${id}`,
+    method: 'put',
+    type: 'json',
+    data: {link: {read: false}}
+  }).then(link.find('.link_read').text('false'))
 }
