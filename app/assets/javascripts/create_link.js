@@ -11,12 +11,11 @@ $(document).ready(function(){
 function createLink (event){
   event.preventDefault();
 
-  console.log("win")
-
   var link = getLinkData();
 
   $.post("/api/v1/links", link)
    .then( renderLink )
+   .then( attachReadEvent )
    .fail( displayFailure )
  }
 
@@ -29,12 +28,12 @@ function getLinkData() {
 
 function renderLink(link){
   $("#links_list").append( linkHTML(link) )
-  // clearLink();
+  clearLink();
 }
 
 function linkHTML(link) {
 
-    return `<div class='link' data-id='${link.id}' id="link-${link.id}">
+    return `<div class='link container' data-id='${link.id}' id="link-${link.id}">
               <p class='link-title' contenteditable=true>${ link.title }</p>
               <p class='link-url' contenteditable=true>${ link.url }</p>
 
@@ -42,9 +41,8 @@ function linkHTML(link) {
                 ${ link.read }
               </p>
               <p class="link_buttons">
-                <button class="upgrade-quality">+</button>
-                <button class="downgrade-quality">-</button>
                 <button class='delete-link'>Delete</button>
+                <button class='read-link'>I have read this</button>
               </p>
             </div>`
 }
@@ -55,5 +53,5 @@ function clearLink() {
 }
 
 function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
+  $('.flash_messages').append(`<div class="alert alert-failure">FAILED attempt to create new Link: ${failureData.responseText}</div>`)
 }

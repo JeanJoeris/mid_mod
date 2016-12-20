@@ -27,4 +27,15 @@ RSpec.describe Api::V1::LinksController do
     expect(response.status).to eq(201)
     expect(response_link[:title]).to eq(edited_link[:title])
   end
+
+  it "marks links as read" do
+    link_id = Link.create(title: "foobar", url: "http://foobar.com").id
+
+    put :update, id: link_id, link: {read: true}
+    response_link = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(201)
+    expect(response_link[:read]).to eq(true)
+    expect(Link.find(link_id).read).to eq(true)
+  end
 end
