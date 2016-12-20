@@ -11,7 +11,11 @@
   <input type="text" id="link_url" name="link_url" value="">
   <button type="button" name="button" id="submit_link">Submit link</button>
 </div>
+<span>Search</span><input type="text" id='search-links' name="" value="">
 <h3>Your links</h3>
+<span>Show only unread links?</span><input id='read_filter' type="checkbox" name="" value="">
+<br>
+<span>Show only read links?</span><input id='unread_filter' type="checkbox" name="" value="">
 <div id="links_list">
 <% @links.each do |link| %>
   <%= render partial: "link", locals: {link: link} %>
