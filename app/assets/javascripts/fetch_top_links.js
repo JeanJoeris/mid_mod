@@ -18,9 +18,5 @@ function topLinkHTML (link) {
             <p class='link-title' contenteditable=true>${ link.link_title }</p>
             <p class='link-url' contenteditable=true>${ link.link_url }</p>
             <p class='link_read_count'># of reads - ${link.read_count}</p>
-            <p class="link_buttons">
-              <button class='delete-link'>Delete</button>
-              <button class='read-link'>I have read this</button>
-            </p>
           </div>`
 }

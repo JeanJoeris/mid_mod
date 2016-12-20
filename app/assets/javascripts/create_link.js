@@ -42,7 +42,8 @@ function linkHTML(link) {
               </p>
               <p class="link_buttons">
                 <button class='delete-link'>Delete</button>
-                <button class='read-link'>I have read this</button>
+                <button class='read-link'>Mark as read</button>
+                <button class='unread-link'>Mark as unread</button>
               </p>
             </div>`
 }
